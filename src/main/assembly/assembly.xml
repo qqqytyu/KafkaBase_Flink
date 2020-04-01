@@ -1,0 +1,37 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0
+        http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+
+    <id>myAssembly</id>
+
+    <formats>
+        <!--指定打包格式，目前支持：
+        zip,tar,tar.gz (or tgz),tar.bz2 (or tbz2),tar.snappy,tar.xz (or txz),jar,dir,war-->
+        <format>jar</format>
+    </formats>
+
+    <!--指定是否包含打包层目录-->
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <!--指定要包含的文件集，可以定义多个fileSet-->
+    <fileSets>
+        <fileSet>
+            <!--指定要包含的目录-->
+            <directory>${project.build.directory}/classes</directory>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
+
+    <dependencySets>
+        <dependencySet>
+            <!--将添加进来的依赖解压-->
+            <unpack>true</unpack>
+            <!--指定不包含的依赖-->
+            <includes></includes>
+            <!--打包的目标路径-->
+            <outputDirectory>/</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+
+</assembly>
